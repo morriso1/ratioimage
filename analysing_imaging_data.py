@@ -10,7 +10,7 @@ compile_DF_from_CSVdirectory, extract_gut_names, combining_gut_DFs, analyse_imag
 check_if_list_of_folders_exists, summarise_and_sort_list_of_DFs and compileCSVs_sortbycondition_apply_method"""
 
 
-def read_csv_folder_into_tidy_df(csv_glob, drop_columns=[' '], sample_id_categories=None):
+def read_csv_folder_into_tidy_df(csv_glob, drop_columns=[' '], sample_id_categories=None, regex_exp="[a-z]\dg\d\d?"):
     """
     Input
     -----
@@ -34,7 +34,7 @@ def read_csv_folder_into_tidy_df(csv_glob, drop_columns=[' '], sample_id_categor
     if sample_id_categories is None:
         df = df.assign(
             sample_gut_id=lambda x: x["sample_gut_id"].str.findall(
-                "[a-z]\dg\d\d?").str[-1],
+                regex_exp).str[-1],
             sample_id=lambda x: pd.Categorical(
                 x["sample_gut_id"].str.split("g", expand=True)[0],
             ),
@@ -44,7 +44,7 @@ def read_csv_folder_into_tidy_df(csv_glob, drop_columns=[' '], sample_id_categor
     else:
         df = df.assign(
             sample_gut_id=lambda x: x["sample_gut_id"].str.findall(
-                "[a-z]\dg\d\d?").str[-1],
+                regex_exp).str[-1],
             sample_id=lambda x: pd.Categorical(
                 x["sample_gut_id"].str.split("g", expand=True)[
                     0], categories=sample_id_categories
