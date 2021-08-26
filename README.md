@@ -1,5 +1,5 @@
 # ratioimage
-> A python library for automated analysis and visulization of ratiometric imaging data.
+> A python library for the automated analysis and visualization of ratiometric imaging data.
 
 
 ## Install
