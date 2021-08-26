@@ -6,9 +6,10 @@ __all__ = ['create_img_dict_from_folder', 'measure_region_props_to_tidy_df',
 # Cell
 import re
 
+import numpy as np
 import pandas as pd
 from py_clone_detective.utils import extend_region_properties_list, generate_random_cmap
-from skimage import io, measure
+from skimage import img_as_float, io, measure
 
 # Cell
 def create_img_dict_from_folder(
@@ -23,6 +24,9 @@ def create_img_dict_from_folder(
 
     if label:
         img_dict = {key: measure.label(value) for key, value in img_dict.items()}
+
+    else:
+        img_dict = {key: img_as_float(value) for key, value in img_dict.items()}
 
     return img_dict
 
