@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: ratioimage
-      url: ratioimage.html
+      title: ratio_images
+      url: ratio_images.html
     output: web
     title: ratioimage
   output: web

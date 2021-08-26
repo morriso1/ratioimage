@@ -2,11 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"create_img_dict_from_folder": "00_ratioimage.ipynb",
-         "measure_region_props_to_tidy_df": "00_ratioimage.ipynb",
-         "ratiometric_measure_region_props_to_tidy_df": "00_ratioimage.ipynb"}
+index = {"create_img_dict_from_folder": "00_ratio_images.ipynb",
+         "measure_region_props_to_tidy_df": "00_ratio_images.ipynb",
+         "ratiometric_measure_region_props_to_tidy_df": "00_ratio_images.ipynb"}
 
-modules = ["ratioimage.py"]
+modules = ["ratio_images.py"]
 
 doc_url = "https://morriso1.github.io/ratioimage/"
 
