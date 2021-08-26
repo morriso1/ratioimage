@@ -1,42 +1,310 @@
----
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="API details.">
+<meta name="keywords" content=" fastai">
+<title>ratioimage | ratioimage</title>
+<link rel="stylesheet" href="/ratioimage/assets/css/syntax.css">
 
-title: ratio_images
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="assets//css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/ratioimage/assets/css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/ratioimage/assets/css/customstyles.css">
+<link rel="stylesheet" href="/ratioimage/assets/css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="/ratioimage/assets/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/ratioimage/assets/js/jquery.navgoco.min.js"></script>
 
 
-keywords: fastai
-sidebar: home_sidebar
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement( document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "[%", right: "%]", display: true},
+      {left: "$", right: "$", display: false}
+    ]}
+  );
+});
+</script>
 
-summary: "API details."
-description: "API details."
-nb_path: "00_ratio_images.ipynb"
----
-<!--
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/ratioimage/assets/js/toc.js"></script>
+<script src="/ratioimage/assets/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/ratioimage/assets/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="ratioimage" href="http://localhost:4000/ratioimage/feed.xml">
+
+<!-- Twitter cards -->
+
+
+
+<meta name="twitter:description" content="API details.">
+
+
+
+<meta name="twitter:card"  content="summary">
+
+
+<!-- end of Twitter cards -->
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+            // activate menu items where href is matching to current page
+            $("#mysidebar a[href='" + location.pathname.match(/(\/[^\/]*)$/)[1] + "']")
+                .parents('li').addClass('active')
+                .parents('ul').css('display', 'block');
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="http://localhost:4000/ratioimage/">&nbsp;<span class="projectTitle">ratioimage</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://github.com/morriso1/ratioimage/tree/master/" target="_blank">github</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                
+                
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle"> </li>
+  
+  
+  
+  <li>
+      <a href="#">ratioimage</a>
+      <ul>
+          
+          
+          
+          <li><a href="/ratioimage/">Overview</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/ratioimage/ratio_images.html">ratio_images</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/ratioimage/plot_results.html">plot_results</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+    <a id="ratioimage"></a>
+    <h1 class="post-title-main">ratioimage</h1>
+    
+        
+    </div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">API details.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+   <!--
 
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: 00_ratio_images.ipynb
+# file to edit: 00_ratioimage.ipynb
 # command to build the docs after a change: nbdev_build_docs
 
 -->
 
 <div class="container" id="notebook-container">
         
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -47,7 +315,7 @@ nb_path: "00_ratio_images.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_img_dict_from_folder" class="doc_header"><code>create_img_dict_from_folder</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L17" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_img_dict_from_folder</code>(<strong><code>load_pattern</code></strong>:<code>str</code>, <strong><code>img_regex</code></strong>:<code>str</code>=<em><code>'\\w\\dg\\d\\d?'</code></em>, <strong><code>label</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="create_img_dict_from_folder" class="doc_header"><code>create_img_dict_from_folder</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratioimage.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_img_dict_from_folder</code>(<strong><code>load_pattern</code></strong>:<code>str</code>, <strong><code>img_regex</code></strong>:<code>str</code>=<em><code>'\\w\\dg\\d\\d?'</code></em>, <strong><code>label</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -58,16 +326,16 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -100,9 +368,9 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -140,9 +408,9 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -159,9 +427,9 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -186,7 +454,7 @@ nb_path: "00_ratio_images.ipynb"
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -197,9 +465,9 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -210,7 +478,7 @@ nb_path: "00_ratio_images.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_ratio_image" class="doc_header"><code>create_ratio_image</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L36" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_ratio_image</code>(<strong><code>num_img</code></strong>, <strong><code>denom_img</code></strong>, <strong><code>mask_img</code></strong>)</p>
+<h4 id="measure_region_props_to_tidy_df" class="doc_header"><code>measure_region_props_to_tidy_df</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratioimage.py#L30" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>measure_region_props_to_tidy_df</code>(<strong><code>int_imgs</code></strong>:<code>dict</code>, <strong><code>lab_imgs</code></strong>:<code>dict</code>, <strong>**<code>reg_prop_kwargs</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -221,188 +489,16 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
-
-    {% raw %}
     
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">py_clone_detective.utils</span> <span class="kn">import</span> <span class="n">plot_new_images</span>
-
-<span class="n">a1g1_img</span> <span class="o">=</span> <span class="n">create_ratio_image</span><span class="p">(</span><span class="n">C1_imgs</span><span class="p">[</span><span class="s2">&quot;a1g1&quot;</span><span class="p">],</span> <span class="n">C0_imgs</span><span class="p">[</span><span class="s2">&quot;a1g1&quot;</span><span class="p">],</span> <span class="n">lab_imgs</span><span class="p">[</span><span class="s2">&quot;a1g1&quot;</span><span class="p">])</span>
-<span class="n">a2g1_img</span> <span class="o">=</span> <span class="n">create_ratio_image</span><span class="p">(</span><span class="n">C1_imgs</span><span class="p">[</span><span class="s2">&quot;a2g1&quot;</span><span class="p">],</span> <span class="n">C0_imgs</span><span class="p">[</span><span class="s2">&quot;a2g1&quot;</span><span class="p">],</span> <span class="n">lab_imgs</span><span class="p">[</span><span class="s2">&quot;a2g1&quot;</span><span class="p">])</span>
-
-<span class="n">plot_new_images</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">a1g1_img</span><span class="p">,</span> <span class="n">a2g1_img</span><span class="p">],</span>
-    <span class="p">[</span><span class="s2">&quot;a1g1 ratio image&quot;</span><span class="p">,</span> <span class="s2">&quot;a2g1 ratio image&quot;</span><span class="p">],</span>
-    <span class="n">img_cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span>
-    <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-    <span class="n">figure_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-    <span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-    <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcwAAADpCAYAAACpzQe3AAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjMuNCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8QVMy6AAAACXBIWXMAAAsTAAALEwEAmpwYAAA72ElEQVR4nO3deZwcdZn48c9T1Xf3XMnM5CQnISEEAki4jyACCiqegOIKKO6i4q66uqL+dNddxXXVXU8UXY9VEQEPLgWUS4xyHyGQ+74zR+bqu6vq+/ujOmFyzyQzUz3dz/v1yovp6q6up5v+1lPfs8QYg1JKKaUOzgo6AKWUUmo00ISplFJKDYAmTKWUUmoANGEqpZRSA6AJUymllBoATZhKKaXUAFRFwhSRL4vIRwf42t+KyOuHOaSKISL3i8jVh7HfOSKyYjhiUupA+pdlEVkoIpsP8tr/FpHrRyy4gInI90Xkc4ex3xQRSYuIPRxx1RIZ7fMwRaQFeBE42hiTG8DrTwW+Z4x5zWEe73Lgo8CJwNPGmIWD2Hce8HXgNcBYY4wcTgwHef9/w/8e3jOU76vUSNi7LIvIQuAXxpjJB3j9BOBpYKYxpngYx/skcDUwFegAbjbGfHWA+04AbgFOASYA040x6wcbw0He/xrgOmPM2UP1nurIVUMN8xrgDwNJlgDGmKeBehE55TCPtxP4BvCfh7FvCbgDeP9gdxSR0GEcT6nR5BoGV5a3AcuBNx/m8QR4L9AEvB64QUSuHOC+HvAA8PZBH1TL8qhVDQnzDcCfdz0QkSYRuU9E2kWkq/z33leojwGX7u/NDrW/MeYhY8wdwNYD7P9eEdkgIp0i8jkRWS8iryvvu8IY8yPglYF8MBExIvJhEVkFrCpv+6aIbBKRXhF5TkTOKW9/PfAZ4Ipy88vi8vbHROS68t+WiPy/cnxtIvIzEWk4wLH3aA4rf45PishLIpIRkR+JyLhyk2+fiDwkIk39Xn+niGwXkR4ReVxEjuv33FgRubf8GZ4RkS+KyKJ+z88RkT+JyE4RWVGu1avqt0dZ3kVEPiMiHeXf4FV7Pf0YByjL5X0P+Ds0xvyXMeZ5Y4xjjFkB3A2c1W/fi8q/vx4RuVlE/ryrLBljdhhjbgaeGcgHK8f+KRF5CciISEhEbhSRNeXys1RE3lp+7bHA94EzymW5u7z9pyLyxX7v+QERWV0uJ/eIyMQDHHta+VwSKj9+rFzm/lZ+/3vLZfLWfmVyWr/993vOKT8XF5H/K58rl4nIv+x13pgoIr8pn0/Xicg/DuT7qlTVkDCPB/r3tVnAT/CbWaYAOeA7e+2zDJh/gPcbyP77JSJzgZuBq/CbaRqASQPZ9yDeApwGzC0/fga/OXgM8EvgThGJGWMeAG4CbjfGpIwx+/t815T/nQ/MAFIM8LOVvR24EDgGeBNwP36Sbsb/3voXhvuBWUAr8Dxwa7/nvgtkgPH4TWK7+1hFJAn8qfzZWoF3ATf3P9GpqrV3WQb/N9KMX46uBn4gIrP7PX+wsgwH/x3uJiICnEP5YlZEmoFfA58GxpbjOnNwH2cf78JP7o3GGAdYUz5mA/AF4BciMsEYswy4HniiXJYb9xPva4EvA5fjn2s2AL8aRCxXAn+H/73OBJ7AP++Nwf9O/7Xfa/d7zik/96/ANPzzyYXA7u4gEbGAe4HF5eNcAHxURC4eRJyVxRgzqv/hN3POOcjzJwJde237APDIAN9/n/3L268DHttr2+eB2/o9TgBF4HV7ve5o/6s/5LEN8NpDvKYLmF/++9/w+3z6P/8Yfl8IwMPAh/o9N7v8/YX2874Lgc39Hq8Hrur3+Df4fcG7Hn8EuOsAMTaWP0sDYJePObvf818EFpX/vgL4y1773wL8a9C/Nf03vP/2Lsvl36ADJPttuwP4XL/HFwJrB/j+u3+H+3nuC/gn9mj58XvxE9au5wXYtKss9dseKr/ntEMcez3wvkO85kXgsvLf1+wqE/2e/ynwxfLfPwL+q99zqfL3t08c+AnN7Crn5XPCZ/s9/3Xg/n6P3wS8eJA4+59z1gIX93vuul3nDfwL/Y177ftp4CdB/9YO91811DC7gLpdD0QkISK3lJsde4HHgUbZc4RYHdC9vzcb4P4HMhG/UAFgjMkCnYP+RHva1P+BiPxzuemjp9xU04B/BT4QE/GvRHfZgF/gxw1w/x39/s7t53GqHKMtIv9Zbm7qxT9ZUI6zpXzM/p+r/99TgdNEpHvXP/wa+/gBxqhGrz3K8q5txphMv8cb8H/HuxysLB/sd9j/dTfgJ8hLjTGF8ua9y7IBDjhid4D2LsvvFZEX+/3O5+0d20HsUZaNMWn8c81AW7QGVJbLcR7snLPH98S+ZXniXmX5Mwz8fFNxqiFhvoTfRLjLP+PXnE4zxtQD55a39x+Reiz+1eT+DGT/A9kG7O7vFJE4fnPOkdg9jLncd/Ap/GaYJuM31fT0i+1QQ5634v+Id5mCfwW/Y/8vP2zvBi4DXodfuKaVtwvQXj5m/37lo/r9vQn4szGmsd+/lDHmg0Mco6o8e5dlgKZyM/0uU9hz/MDByvLBfof+HyLvA24ELjDG9E+Ie5dlYc/f7OHoX5anAj8EbsAfMd8IvMxhluXydzQW2HKEMe5hAOecPb4n9i3L6/Yqy3XGmEuGMsaRVA0J8w/Aef0e1+FfIXWLyBj2bIvf5Tz8vo39Oej+5avWGH4tyRKRmIiEy0//GniTiJwpIhH8Zp7+hVPK+0bKj2MiEh3EZ63DTzbtQEhEPg/U93t+BzCt3HewP7cBHxOR6SKS4tU+T2cQMQw0zgL+FW+ifBwAjDEu8Fvg38q1+Tn4V/e73AccIyJ/JyLh8r8F4g+EUNVt77K8yxdEJFI+eb8RuLPfc4cqy/v9HQKIP4DoJuBCY8zavfb9PXC8iLylPFjmw+zVylEuy7vKb7Rfv95AJPGTYnv5va7Fr2HusgOYXD6P7M8vgWtF5MTyOeQm4CkzhFNbyg51zrkD+LT4gyUn4V8A7PI00Cv+YKd4+dw5T0QWDHGMI6YaEubPgEvKtTnwp3zE8edVPYk/9Hu38v+sjPGnl+zPQffH7yjPAd/D77DP4V8pYox5Bb8v71f4V159QBt+oQX/ijDHq6Nkc+w7yOFgHsQ/OazEb47Js2cTyK4TSaeIPL+f/X8M/By/mXldef+PDOL4A/WzcnxbgKX432N/N+Bf8W8vx3Mb5e/IGNMHXIQ/KGFr+TVf4dUTk6pee5dl8P//d+H/Fm4FrjfGLIfdcyHnAncd5P0O9jv8In6t7BnxR4umReT7AMaYDuCdwH/hJ9y5wLO8WpbBL7/p8t/Ly48HxBizFL/v8An85Hg88Nd+L3kE/zyxXUQ69rP/w8Dn8McSbMMfuDPQKTGDcahzzr/jN1WvAx7CrzTsKssufn/oieXnO4D/xS/7o9KoX7gAQERuAtqMMd8YwGt/A/zIGPOHEYgrhd+/MssYs264jzdaichXgPHGmEGvSKSqyyDL8teBNcaf3jHccVn4ieEqY8yjw3280UpEPghcaYzZX0vBqFcVCbOSiMib8EejCv4V5GnAyUa/6N3KzbARYAmwAL8p7jpjzF1BxqVUf+XpD0/h1xw/id8sO8MMcGGFWlCu5c/ArynPwm/K/s5ALnhGo2pokq00l+E3H23F/wFdqclyH3X4/ZgZ/D6Qr+NPGleqkpyBP1eyA79p8S2aLPcRwZ/21YffjHw3/lz0qqQ1TKWUUmoAtIaplFJKDYAmTKWUUmoADrpqvkhI22urjvC3s/+JBY+9EWvLZkxjI3cufJp3vXDToXdVB2SMM6S3ahsOWp4PLR6dzGvj76bPFHBxCRMijI2F4GHolB4W992B6/YGHaoaRgcqz1rDrDEXNHyMU397BrJtK7JqHVgWluh5VCmAfGE7L8tL5MizQZaxyVqHi4eDB4BtbGLhI128S41Wel+2KiYS4ejGN9LotZC10mwpLeYPH9oG0SiyaTMkorg33cb31ozapR2VGlIGhw1dD7CREAYHEPKNC5ll5gMWrrh4phR0mCogmjCr2H/OvpEbXreS6GwHd7vhtO+eym8fGI97/9PkPYufbujlmeyjFErbgw5VqYriJ0v/ry3dj2EaXaabEyhRIF9sCzQ2FRxNmFXs8e155j9zFAvjm/nrokksz/6Sd72w3/teK6UOyLC1+y+0h5YSsmMYrWHWrIPOw9RBAqOfZSVoTh1PW++zgBt0OFVLB/2MLCFEU908POPQnX4FMCRj03G9AvniNg59sw+lDkwH/dQoz8vS1vsUmixVNRErwgnWQmbZZ7HrNDYxfhKnxt9JNKx98mp4aA1TqSFQ6zXMRHQqJ8XeRFr6WNL7Gzwvfeidjohg2/69pndN8YiEW2mMT6e997l+fZBKDd6ByrP2YSqljsiJje/jHa2TiduGrdkxLE3HRiBhmn3mQhZLbbSVdECOGj6aMJVSR+SE6ET6SrBkp8uD+XsoOfvcvlGpqqBNskoNgVpukpXydbfBoH3lqhpok6xSalhof6GqFRU3SlYkwpUtn6WlfkHQoSillFK7VVzCfHPjx/n5tvPZcM1Mjmu6itb603Y3+SilRppNMjadExvfx7SmSwC/pSoSbiUSbt39WKlaUHGZaINpw1qyhOh1Z7Lk0jbSd3hMvT1HV/qloENTquac3fBhLp/cQEdB6MxP4jZnKym7lbfWn05dGJZ2lXikeC/d6ZeDDlWpYVdxCXNx98/42rs+w6SYQ3vR5ofboCv9StBhKVWTxoWS2AKegZAlvMa6gDOak7RGDWHL0BQJ0bb1tSxCE6aqfhWXMA0On1r+70GHoZQCXvJWMKl3Hk0RiNqQsMJELQhbBs/A4p2GxaX7gw5TqRGh00qUGgLVPK3EslI0p46j0T6Ko80MXjshysaMcEfPI+zoeVJHyaqqc6DyrAlTqSFQzQmzv2h4PHWxiXTn1uM4O4ciLKUqjiZMpYZRrSRMpWqB3q1EKaWUOgKaMJVSSqkB0ISplFJKDYAmTKWUUmoANGEqpZRSA6AJUymllBoATZhKKaXUAGjCPExCiEi4FZFI0KEopZQaARW3luxoEI9O5rj4GwibCC/kfke+uDXokJRSSg0zTZiDJBLhtNg7CBubpfI8+eK2oEPah23XM6f+TTR5Y9lptbO067agQ1JKqVFPE+YgNSbnkJQIPSbPjr4XgMpbbez1dddzbEOMoge9xXpWh1spltqCDksppUY1TZiDYFkppodOJWOKvFR6EMftDjqk/YpaNmOjkHchUwLPDPxuEqn4TE6NvJmZyRQXTyhR8izaCjb3bMnwaN/38bzsMEaulFKVSxdfH4T6xGymRk5lbX4Rmfy6oMM5IJEYMxovZow3nlXuX+lOH+rmvkI8OonZ8Yv4/vF1LPgHD5nSCl19UCgB4K7s4Ae/msYNr3wVY/LD/yFGGV18XanqoXcrGTLCkTfDCv4AZffIwxkCZzXcwGdnJ0iEHE6YuZ3Gt07AHDMdkgmkrQMzthFZsxH3hY3c+L1pfH2D3uB7b5owlaoeByrP2iQ7aEdyzrEZU3c854Zfj4WwxKxgQ3oRxVL7Eb7vkWmztuKaWYQtQ91sG5MtQiwCpRLexPFg2zB1EjZwTkuRr2+wqZRkr5RSI0VrmCPG5tyGG7h4XANhCywxFFwh58LqXpe/lZ5hW/p5Sk5HINH580ktTmi4gr+fPIXrP9aOzJyImTwe09KK7NgBjkPxR4sY852/kCtsDiTOSqU1TKWqhzbJBmx8w9l8etL51Ic9sq6/XoQxUPCgtyT0liBdMjyYfQoRiy19Twd6R/v6xGwujr+dH1y6nvrPL4RwBBOPIw/8hcbrH6Qvuyqw2CqRJkylqocmzICNqTuR18cuBaDgeTieIWL5iTPrOrgYjq6LsaI3y3njkvSVYHVviYfyd9GTWRZY3JaV4j0tH+WLp25lwjkuhbUFmn/8uC7WsBdNmEpVD02Yo0DIbiQRHccbk+/g5GaLrCO05Q1P9m3nldz9gTeDRsPjMXg6p3M/NGEqVT00YY4qwoKGv+eyceNIhgxhgY1Z4dauv7Cl+9Ggg1P7oQlTqcMhiEQRsQALz8tRCQMKNWGOMqHQGD408QYmJyBqGURgY0a4s+dpNnQ9EHR4ai+aMJUaDJtUfBrHRS7i4pYWJsU9YpbhiQ6Ln3X8jGxhQ6DRacIchVrrT+O9Yy6mPgzh8n1lNqQNt2z5MoaBr96jhp8mTKV2ESwrjm0l/EdiIeUbY5XcXsJ2PQDnJ/+O6akY01LC3LoCY6JF4iGHZzob+PiqWwNdHEbnYY5Cbb1P8c3sGqbXLeTk0Gzyrsuz3jOYCmiyUEqp/alPHEMqMo6wJLAJl/+FsAnjUsImzA5nGUk7hOtBxgEPiIcckpEiZ7bs5MqOq/jRti8G/VH2oQmzwpWcDlZ2/ZqVQ7LCkFJKDa+SmyEuTYSJYhMGIGRCCDZhogDE7CbanSx14ToKrpB3LXJOCNcTdhaiPFmhS49qwhw1NFkqpSqfMR5RErubYQE8PMDDKm9LSBOreYHm4llMTlrkXYuNmTgr0yHubt/K0u7bA4r+4DRhKqWUGjKFUgd50sRI7d7miodg4fYbe9GRWc6ieAGv63wyToT7e5ezsue+ir4jkg76UWoI6KAfpV4VDY9nSupMwkRx8O94ZPAAcCnR7WxiZ98SwEUIgYQq6i5IOkpWqWGkCVOpPUXCrUxInYwx3u5tabeNnuxaXLc3wMgOTROmUsNIE6ZS+2Pv9Xh0jPDXaSVKKaVG2OhIkANlHfolSimllNKEuQehLjGLcKg56ECUUkpVGG2SLQvZjVzdegPfvmI1Kxc389D2JjoLwh92bmBJ72/wvHTQISqllAqQDvrBX+j858dfzzuv3Y7JOhQ3F3FzQqEvRE9vnIVPrmFz98NBh6kqmA76UYcihHQN6FFCB/0cxDfnfJh3XrUJiUZABDfnzxtKNJd4ZPVktqd/HXCESqm91SVm0RqdS9prY0fP01TiABORGInoBJpiM4hIgvU9D1f0xHx1cDWfMBtT83j3yWvw+gQ7HgJjCNUZnD7hU/fO4vtbv43jdgcdplKqHyHE7MhCwl6EmJWi3VoCeBWXjE5ouIJJjCMsFmmvSLaui+09i4IOSx2mmk+YIYmQOAqMY3DbcvStFD780Ez+mP89O/t+ha7hqlTlEStCwiTYYq1nW/ZFxqaO5ShrPisLj5LOrQk6vN1aTTMx28YWYYwV40T3DP6a2EFfdlXQoanDUPMJU8TGyxsyW2weXXUU/7p2PUu7vhR0WEqpgzBekU6rg1ZvMq2xyf7i3gYsqaxTWi9ZIp6NJULMshkbibDAvJHHrFsqrjasDq3Gp5XYzJYz+LffzuLsB4u8e/EPWdp1W9BBKaUOweCwufg8YyRJkySJE6UgBdL5TUGHtoe8ZAmJhS2Ch8EWYUo8yZl112FZqUO/gaooNZ0wxzWcyv2Xt/Pv717NLKZTcjqCDkkpNUB9uU10mL7djze6z1dcrS1mEiRDNmGxCImQczxcY5gSqeM1dVdhWYmgQ1SDUNMJ8z+mXEDybdMJnzqZu27ayRXNnwk6JKXUAHlemhezvyNvSizjKXb2vRh0SPvosLYSsgTXGNKOQ8Z1yDsGEWiVBhoSRwcdohqEmk2YLfULuOq81eB4mOmTkRnjuGBCzX4dSo1KhdJ2Huu7hR09TwYdyn71OJtwPIOHIW8cSsalZDxsEaKWTXP4aKDip/CqsprMECIxbjnmAmInNULIQtJp6OzlRxs7gw5NqaoUj05mbtO7iIbHD/l7+82wlTmavTP9MuuK3YTFIiohImKXR81CzLYomDSVGrvaV2UNKRshlzV9lMs+2A2AWd8OtLPlDy7P6gIFSg0Z265HJETIinFy7C1kTBanwvoYh5sxRZ7s/SEtdScxXU4mTJhcsURMwrSbHnZkXwo6RDUINZkwPzm3AI6H15kjt8ahtz3Gvzw5seJvaqpUpRNC1CdnMSt8Nq00ERaLvOfwvPkz7T3PU4mr8Qw3Y4q09T5FG0+xZ/Or1ixHm5pMmLesSlL4qcWGbAsPbDGsL3XxVM9NQYel1Chm05Q6jjn2Of40D9vGQrAtobOYZWdmBbWYLPelSXI0q+HF13dd6VXxR1QjplYXX7esBJPrz2aWmUeDHaVkPABilg1Au5Plr5lfVMmULUGwMbjoeaO66eLr+9AfvFJHwrbrOSt1LVOjKWwRMiWPUrlYdTo5XjZ/o73vBYwpBhvoERNa6k+hyZ5KyjSygzVs6X406KBUAGo4YSqljkRz6jhmxutwDbjGYAkUPZdV1grW91XPXTksK8lsOQPL81frqbNa8Fuo9KK71mjCVEodFs84FFx/Er7jGTpKeRZlf0mhtD3o0IaYR4ECRjw8DCUKpOIziITqMMajL7cRx+1BE2j104RZoUQihOx6AAx+v5Dr9GLZCURC2BJhXPIEAKaYOYSwWM6ztPW9iOelA4tb1Ya6xCxmyCnsLBWJio2H4Xn3oSpMliASwhUXD4+i5HApUR+dRL34c0rHhKezvvdRHWVfAzRhVqCJjefy4daFHJ0qEbM9so5NzhW+sOk53t10KuNj/lV9xhG25yDrGEqeYToLWccpPNbzTfRqVw0XIcS88EWECVEyLhZCp+mjO7M86NCGxdjksVgIbnmU764LWAt/YJNNGNuKacKsAZowK9C7GhZy4fgedhYijIkWSUWKPNk2hp7SZr69bRVjojM5I3QKM+pD3NX3NNvTL+7e1zVFNFmq4WQwbJFVTDAzgQgddPJK+u4qGNyzP8IEaw5hE8ERt7zFIkQM24R2vYSmxEx29LSjZa+61fC0ksrVUr+AFvto8qSJU0/UxHk5cw/FUtserxOJYUw+oChVf7UxrWTPqVhSvt42GKp3jqUwufG1jGcGDi5Z6WVj5m+0JubRwLjdr+qVdjZ0/Ynq/R5qy4HKsyZMpYZA9SVMwbKS5f0smlPHcRynk6PIM+lbcdzu4QmyIgkNyTk0R44BYG33/UxoOJ2kNONSwjEFtvQ9qU2yVUQTplLDqFoSZjjUTGvqeGaZ+YwLJyh5/i4NEZv6iEW65LE028WTPbdgcIY95spil//rEgqNwfOKeF4O8NCm2OqiCxcopQ4qGZvO5Y1XURex/EUIPIiH/IbYRMg/f0RsYWKoHrEiGK/WEuarza2OszPAOFRQNGEqpYhHJ/PuMe8hHhI8Yyh5uxYj8BNl3jVYHpQ8w3anD+NV4wAfpQ5OE6ZSiqmJM4mHhJJncDx/IE/RNbjllkYL8DAUXY8uq7M80Eep2qIJUynF6r6H2FFavnuOYcRKcmbofDxPcDyDhyEs/v3mx3vjWSZhjNERoaq2aMJUQ25O0+V8aOJsYpbhqQ74U+5pNvU8rlNgKpjj7KQr/Wq/XGNqHq4x5D0XYwwxK0TYEhxjcPCgnFiVqiWaMNWQu/2kFuY+cA5YFtcC0nsS8pvp/OhbLfxg0w6e6/5JDY6wHD1ikYmcGbqEiGWBB0XjUjAuISPscDK8ULi3ShcpUIdLCJGMT6XkZCiU2rGsOACel6GaRhBrwlRDLmK7YFlI2w5M6ziIRvGufSfXXgvXAu8e18KdnXrD7krleHm6TIasEwagzdrByt77MXh4blYvdtR+xUINxEINlNxekrEJhO0kfbnNVXIvVJ/Ow1RHzLJSiFgY4yFiceXYj/Djf1hH+JIT8GbN9F+Uy2Gt20D6/5Yy444VdPQ9H2zQQ6xa5mH2e/Vej/VUoA5OJAawu+ulIXksthWlq+/lUXeRpQsXqCFnWQmubv04H53bRUM8T64YxhJDXTLPsu0tvNgdJ2pBwYNHthX4c+E3pHNrgg57WFRfwlTqyITsRkRClJwuRtuSgZow1ZB6y5gb+edjC5x+2U6shijEI2AMpieHNMTBcSkt7+Gd/zuFe7u+EnS4w04TplLVQ1f6qQGWlaK17kQWWGcRFouS8dhiOnmh+6dD3CQivGFSiAVnb8Ca2IzZmcGqi8H4Mcik8jm5IUWkuZ3Zd0a5t2sID62UUgHRGmYViEUmcmnd1Vw80WZOXZZYyMUWj4Jr05aP8f3VLg90/zdD2SwSCo3hguT7uGii3+wKMDbiMreph1kndBI9th7TV+StXxqnNcwKoeVZqYHRJtn9EhLRKRwTv4BxZgwehi7p5dnu/2XXIIdUfCYXxS/nb+5f2N6zKNhw9yMWmcg/TrqOSyakiVj+3Lio7RKxXRLREp2ZBL/f2sB/rP0anpcd9ngsK0Ek1IglYUQsMvmNjLb+i8OhCVOp6qFNsv1YVorj69/O6xqmMjVlaAh5WAJpR3ilJ8Gz3RbgcnHDJ/jpBe3cs8rm6U3RoMPer2nJs4nb8GxXkpgFyZDHlESBpmgBYxxKnoU9gqdyz8uSLw5/YlZKqZFWcwnzgoaP89bJSRrCHoJDzPaIWoa8Z/FyT5jbe+5nV41oiTzNDX8+i991fQPPSwcb+AH0mu2s6JmFMYamqM38JiFuOzTXZcgXQ/QUw1gVX/dRSqnKV1NNsnWJWfzt9AvJlMJsyiYIi//xtuTD/H5zgQd6b67YxHhgNuFQEyIWjfHpnBe+gLdNgXlN3WzJJHmuK87v2rbt0cysht7oaZIV4tFJGOORL25DfxPqQKRcn/IX2q/+bpX+tA8TOLnxOn7/2hK5fJgtPXVsyMR5stPmpx2/rKL5gYJt12FJBGMcPLPrJrdV9b+y4oyGhPmecf9qbpzXxdy3F8kvS3PqrTavdN0adFiq4tg0182nPjQJAA+XjNtOycvhuDlyxXZct49qPqdowsSfSPuBCR/hHUflWN4X57ZNPfy15+ZRtwqFqjyjIWE67mO7y7P9+CL+7soSt7bdRDWf+IabEMLgUj3foc20potp8Y6iKHk8PCwsbMK4lAAoSZEsPXQWVtGXXUs11j510A/guN18b/N/cMvWFMY4FXj3jF3/j6ql8KlKJJk0Ztlm3j6lmbWFD/FEz83ob27w4tHJTEicRNpto633qaDDGRIiNpO8GQCUKGFjE8JGjEWYMCFsMJCQFA2RFla5RbKFDQFHPXJqKmHuUmn9lInoVM6NX86xDXG2Zhzu6Pya3g1CDQtr5QrMQ89R3JDj/LlZ+krTeWpJfESmHFWbSKiOEFEKbm/QoQwZY1y6rE7GeC1+ciwrSYkQNmETxsVFjIVj1V7LXE0mzEqxK1Ge0RKnPmzoK8Gi7k6MKQUdmqpC9mN/wX16Lfl1DuExkJwuNC6rvZPeUOnJLKcns5LqapJ0Wdb9O6Y0LiRCgqRpxOCSlm4KJk291YpDiR5vC529y3DcnqADHlGaMANiWSk+N+1qxsdc+hzDU+0e9+d+z86+F4MOTVWp4oMr6VoTwZgIPevj9OSj/MeqnRVQuxRCoSbGp04i47TTm1vvD1gLPK5Dqc7Ro8bk2dD1ACBYVtLf5uUxOPvckaTWaMIMiOfl+HnbKs6KH80fc8+wseshHXykhtV37zuaF3d6PFlcxtre3+F5xcBPfCG7kXNT13JMKkXEFvqKHsWEIeO4rPG2sDLzJwql7YHGWLvMPt1XQf9eglZTo2SVGi6jYZRspZXnkN3IGxuuZ2ZdBA+wgKxrsAAR6C0aNubTLMr8DMfZGXC0qpboKFml1BAR/PQGh98kKZyeei/HNEQQIF0yiEDYEiIWhC2oCwthK8WL7kS605owVfA0YSqlDsKmIXkMrZFjKeE3x83wZtNox8h6DktZzLb085ScjkG9a0NyDueObSTmz1LAILgeOAaM8RNmwYXtuSI9mdXD8LmUGjxNmEqpAxDOavgg544dQ2/R0F3074ZjCYREGGuFGFNawI7kPB7P/GxQSTOT38bS7iIx2ybvupQ8D8d47JCdbHSfx8IiXdhOvriDahxYo0Yn7cNUaghUYx9mfWI2Hxx3BfVhaMtDbzlhhixBANuCdMkj63hscDt4vve2Cl0QRKnB0T5MpdSACSHemHwHYQtcg990GrEoeYZI+fY3rjHEbIuSB1Enyon1VxI1UV7I/Y58cQfx6AQ8z9FRrqpqWId+iVKq1kxpeh1HN9iELb8JNlZe9KUj57I969Cec8k5hrzrsanYwyvuY4RNmHF2HafG38nkxoWcG7uSSakFwX4QpYaQ1jCVUnuxOS9yCj1FcDzD+nSBVbKWbYXFpLPryouNW8Qi4wB23ybs+dB2jku9mTZZTVvfS+wMrSZX3BHoJ1FqKGkfZlkk3EoqNpHe3Ead86UGrdr6MG27HgBjvIpbe1mp4Xag8lzzTbKRcCtXNH+GPy54D0svPoELku8LOiSlAue6vbhuryZLpfqp6SbZMXUn8s2Zl/K6GZspFEL8etlUHsl8L+iwlFJKVaCaTZip+EyWXHAiIpt5eWsLX18uPNT3bRy3e0TjEIlwav37AdhhbWB91x9G9PhKKaUGpmYTpojFju46bt/QxPfb7qQnsyywWOJEsRCKRpu/lFKqUtX4oB9B7zSvhkK1DfpRqpbpoJ/90vOHUkqpganxhKmUUkoNjCZMVdFCdiPTmi5BJBJ0KEqpGqcJU1W0Y+rfwMtX1PPw6R/hiubPEAqNCTokpVSNqvFBP7XKJhGdjIh/vZTJb6RSb6GUjE2n8yOnIxEhs1649+Vp3Lx+J0/1fJ9K6oPWQT9KVY8DlWdNmDVEJEZz3fGcaV9AcyyEZ6Cr6HBP93cqekWXD0/+HN++xQHP4K3ZQWZxnq8+PosftD9Ie9/iiridlCZMNboIiegUxidOwMMl63bSmVmG6/YGHVhF0IRZQ2y7nlRsEg3ho5hl5hEWm+XyCqeHTmJs1KI+IhRd2JZ1ebj4CDt6ngg65IOy7Xo2vulttP76Pbu3WWvXIK+sZvvP2nhpayu/XB/lvux97Ox7MZAYNWFWOmF8w1m0yHSWdP886GACZjOx8Sya5CjCJoqFhYdHRrpZ3X0fxhSDDjBwej/MGjGt6RIuqzuFZAjCFiRCELEM9tZ5TEjYlDxD0fVv/usB7X2Lgw75kFy3l2Me+DPdvJowvRkzYcZMWt4EF73wAhc21NN243wm/m6pFnjVjzC16WJO5ERSYZuXihuDDihwTanjGM8xuKaEhYWFABYR4oiEtPwchCbMKjKl8SL+ofUU6kKGrCtELb9CkfeEonEJW1B0oeAZCiV42nkJz8sFHPXAZPLr+NCUP3PzxvP22C7dXbBuK3St4tF1kzCmFFCEqhLFIhN4U2oBq/vy/C3/MO29zwYdUuBsCeHil5MSBXqlnZLJ0pFejudlA46usmmTbJWIhFv5xFHXMy3pUTJC3oWOgrChz+XPpb+xve85ptWfT2dpDZn8djxTHJX9FfMbr+avVxaIfuc67Gee5YF/2snHV61nVe8DgX4ebZKtVDaR8FiKpXYqaZBYkIQQYr06TUuT5L60D7PKhexGXlf3AdroYjsrcU2JjvQruG6GSh0Be/iESLgFzzg4Tg+V8Pk0YSpVPTRhKjWMNGEqVT100I9SSo1ylpXAsmKvPpYQ0XAD6ew6DE6AkdUGTZhKKTUq2EyoP42opPBwMXgY4yFikS92UXI6gg6w6mnCVEqpUULK0z9cHLrdTXRl14DxcN3KXXikmmgfplJDQPswR44QIhwegzEeBg8Ax+miFkbBCiHi0UkYXHKFzUGHU7V00M8Ii4bH896WD1DyDGOjFpdMzHLpc78kX9wadGhqGGjCHDkNyWN5T9M7yDoGxxg8A22FPCVcnincTSa/LugQ1Sing35GSDjUzAcnfohv3OLgXuhPsrcWL8Y8upHw4iR5XURDqSPWEBGSYaFQnlE0NpYk5xjgMh7Lf5NaqG2qkacJcwj9z9zP8U//nsF9y7l7zgxsbOCeX40nndsQVGhVwbISfOyoT7Cz4PHr3ttJ5zboMl41qCezjK9uvJkJqZM5nhOxRMh7Dr1kWWueRZOlGi7aJDuEPn/05/nc8nP32Cbf+gWXfqGZP/XdrCtqHKFkbDqrLzmXUslmw84GHmmr4+tbbqc3uyLo0LRJtsyyUoTtFI2J6dRbE3ApkTc9tKeXUnI60WSmRgPtwxwhlpXgzY3/SMy2aStmebT3u1oLGiKh0BieO/ddHHtuN6U2FycnbNzQxMZ0iknJLDevaOLx3ApWdN8z4rf80oQJc5ouZ47MoDESImIJ4fIC/znH0FdyecVbw8qe+/TCUVU8TZiqKkxsPJc1759E9LK50NaF2dGLTGjAzJmBZLJ4f13KH3/Zwg2rlrG2694Ri0sTJry75bNMrbPpKxksEWwBW8AtH7Wr4PFCfhMv9dxeEfcwVepADlSerZEORKkjsbX7cWb/qJPC3UvxLjwXzjsRM3UiksliImHktSdx8Ycz3HzMnKBDrTkRW2iMQF1YEMAzfrL0jH+rubFRixOikxmbmht0qIcUCo2hKXUCjal5NKbmManxfE5p/ACRcGvQoakA6aAfdUgiERqTc3C9ArliZ+Arimzs/iPzfnwZK+c9iLnoTKSnF5avRcSCkkPPw118f1VdoDHWorvSdzG97m3Uh6HkvVqzNEBfyWDLriRa2Uu4tdafxhn2+YhAyfPKtWWh5HmI1jFqmjbJqoOqS8zi6rFX8oYJBbbkImzLW3xty230ZVcFHJnwqemf40uLZiHFErJlG2RybP3uFs58fAsbu/84otFokyyAMK3pDVyafA0NEf/rMPhJMl0yrEsXeJEn2dr9Fyp18E88Opkrmq4hHhLSJY/uokPec1ghS9iafhbH2Rl0iGoEaB+mGrTG1Dz+Z+ZlnDK2i5DtkS2G6SlG+J/lIe7t+krQ4REKjWHN69/K5G+fhWzYjPPoCq76zlTu7LxpxGPRhNn/ODHGpuaSDLVytDeXlkiczcU+/tb3Yzyvspdws6wUE+tP41hzIlusrWzMP00mv0kH7tUYTZhq0C5rupFbLthKLOVQyto4jkWxGOLedRP555U/pFDaHnSIgM3MpjdiE2Z7YUlgU0w0YaojJwg2AAaXSq2F1wJd6UcN2u/7fsCNiz7ER2b30JTMkclHyJTCtBUE24oGHV6Zy5quu4MOQqnDJhIhGTuKhugUYlJPyeQomD6ypQ4y+S06DaeCaA1THVIk3Eo8MhYAYzx6s6thz7WMap7WMNXhsO16jq97B2ETxoi/kLy/pLyHS4leaWdL39Mj1HdqEwmPpeT01vy0H61hDsKcpst5XWo2xsBd6UVs6X406JACVSy1USy1BR2GUlWnITGDcWYMOUoUTBELC49diTOMJ2Opi02mKz38d2M5pumt/P34Y3m5y/DT7V8c1mP59s5JlX89pwlzPy5rnMOCMUVW9EUo9lb2IAWl1OjVk11LJlUkgo2LjdcvaVhYhEyofAuz4U8mHc5q7t86hS7pHeYjCa31p3KydS51dpis69Bh+ljPi3RmVlT0SGRtkt0PkRgiFsY4OjpODchobZK1rBTgaT9ZgFLxmRwfeT02NiVKFKRASQq4lOgz7Wzvew7XHe4kNnJsu54bJn2Uhsir2/Iu9BYN6zN5nnTupzv9cnABok2yg2JMnoNcRyhVFWY1vY2l7R/CvusPXPh+eKTnWxgqe1GBapTOreGpwk9IRCdgSQjPOLheAcfN4zjdVff/xBiPsAXJEGQdf5GLuA2RmGBLjFLfRTzMK1RiE63WMJUaAqOthhkONZPN/2r3c/Zvf89ZHyjyRM93A4lN1Za6xCwuSbyTeMii6BqSYYtESAgJLO/J8/vurxPkwEKtYSqlduv72IV7PHbfdilXfeHPPNETUECqpvRlV3FH9r+w7ATGeFhWhPGpk0jJWLY7S6nUUfiaMJWqMSIx7C+/f5/tUxMj1V/vT86XfqMkq63ZUR2awdndN+t5sLn74YAjOjRNmErVmDc2/tN+t2/Lh4f92LHIRC5JXU3e82sQYbEIWcIi5zF29Dwx7MdX6khowlSqhsxtehd3fze3T4OXfOdWPrn2yWE/fn3sKI4fE6YtHyLnGMKWX8+c4B7LDjRhqsqm96pRqmbYPPk2cC9/8z7PXH3TRHoyy4Y9gva+F3i2I0/CFoquYWu2wLpMlrXFvw77sZU6UjpKVqkhMBpGyVoSM87ir+EdN+/VbVs2c+XJK0f4Di9CIjqFotuH43SVt+mpRlWOA5VnrWEqVSMMDu+/uANJlyfB/9f/MX3+LwO4HZohW9hQXtHFoMlSjRZaw1RqCIyGGuau8iwSQSSE5+XQZKXUvnQephoR4VAzlvjrX7pevqqW9KoWxhR1yUelDoMmzCoghEAskrGjMMYjk19PEDWHY5rewYLwbGwRXGPoKBRYZa1gbdd9gcSjlFJDSRPmKCYSobluPsfIadRJnDo7TN5zedD9SSC34+r1thOx5hC2hJIHIkLWG/7bEiml1EjQPsxRQYhFJtAQn4otYYpump2Z5dTFp3J+9DJK3qs3BVoqL7Oh64+BrZwSDY8nEW1lXHgOa/oeoeR0BBLHSBtNfZhKqYM7UHnWhFmxhJDdQGvdCRxtTmJmvI4xUQvbgoILq3vzLOY5XiML6PHyLEr/FNfLat9UQDRhKlU9NGFWPBuRMJYVYVb965lvH019xKY+LNgWeAZsAUv8/3YXDbd23U2msL3KBtcI9YljGB89ni53A5Os4zG45CTD2t6HcNzuoAPcL02YSlUPHSVboUQinFr/fhpJkgqFSYZsjmuyiFiGrqJQcKHoQdiCjGMwBjxgdV+WnuxaPC8d9EcYMvWJ2ZwTuYyZ9TFiNizrnsnbpoQICfSULG4xcZZ0/zzoMJVSNUoTZgUIYTOrPs7avgIhEeK2kLI9uoo2bTmPjbksbdLOmtzjuF4B1xTLk76rx6TG87mu+RwM0Jk3vNSbZ6UsZ376JCbEDSv7hFXZyr+bgVKqemmTbIUQiWCMvyS2bSeZVHc6Oa+Ljr7FGFOi2keantL4Ad7aOoGuIvzfzvtp730WMIRDzUxInczm3kV4XjboMA9Im2SVqh7ah6kqnE08OgHXKwYyJeZIacIcXpaVwPMKVOqNhVV10YSp1DCqhYQpEmNsai5jQjMokKYzv4p0bj3DlcREYrTUzafFPppZchR9bpFnnfvpySyn2ltcVLB00I9S6rA1pU7ghfMW0HxUhui0CFhJnrlnDndvqee2rifZ1P3IkM79ba47mYtib0AEjIExMYuwFSHVexn3ZFYFNs9Y1TZNmEqpQ8qXdtLel2TixAL2KdNxzzqN08b9nul3b+D8LfP51YZT+UXHzUM2GO3KxktpjAhbMh6WQNgSeoseD+fv1GSpAqO391JKHVKusJlvLK8D1+AuPAfCEbyr3krrV8/hwut6uemMTZyXvGbIjvdc707acoaCa/AMdOY9ftt3D+ncmiE7hlKDVXN9mI2pebR3fwNryRJCJ39KV8ZRQ6I2+jAjnFJ/LYtu6MP6wvv2eM7+9X18+tP1fGXdvx9RjP2OhmDvsWWka5YiMWY1vhGAEGEKZCmYNB4lOjMrKZR2oH2p1UkH/ZS5L30Lb+5cAJLxd4/KEZmq8tRCwnyVzcTGs7hmzELeMaWLX21o4mc7H2FndmVVlSchRGvDAo7mNaSIUcAhRwFXHHKSZWn3nXrBXaV00E+Z+9unkLlz+fnJj1ZV4VZq5Lhs7X6cm7of56a1QccyfAwObT3PMKnxOMZZddieBQYKxiInlTsnWA2fmqthKjUcaquGWY1sbDuJYBGPtlAXmUCIGLPN8bREYrjGUPIMec+lYBzWW2tY03UfOi+0OmkNUymlDiAabuGsxLtIWhHCYuFhcI0hEfL7UUOWELKETKHEyzxBW/dzaLKsPVrDVArhmvGf5dxWw+q0zVc33jzo+3hqDfNVqfhMTo28mcmxJJZAxBLyruE3PbeSya8biRAOg2DbdYyrO5FWjqbe1FHCoSAFXs7cg+vlAfC8IsbkA45VDTcd9KPUAUxsPJfNd54H9XW4j77ML247ir9/5ZZBJU1NmL6rWj/Lj65ei9NnWLdyDEu6GpkYzzMumeWPW1r4l1U/pFDaPtxhDIFd/zv1FFiLDlSedR6mGrXCoWYaksdyWsMHuWb8/+NjUz/P/MarB/0+t8w6AzP9KNjegdUQ5R2nr+F/Zn8Q0R6LQfvpP27E/vL7iU6L0JmPsaNgszkbw7Y8Xju+kympM4MOcYAMmizV3vSMoEadSLiVr8z6BybHHcJiEDHMauikuSlN8+LpLO4e+HvZdj2vf+tWTHweMr4ZiUWI50q8dk0HsiyC8XRVmcF44g8tnHEjyHVv4jVrfktiRSsF18L1LFxj4VIKOkSlDpsmTDXqXD/hej5y3UaK6/Pk2kPkMmGKjk0uF+GxHZlBvVdDYgb2mbPwABMJI/UppCHGM+1jynfHUIOx8Mnv85PXxLnq2q2E6iEVKRL1LLamU9y+Ic7m9B1Bh6jUYdOEWeWEEEgI8KpmkvUrPWlM1iV6XD2RTJHY6hy3L5rJlzctY1XPjwf1Xtc1vxkzdTLUN0CxhAGkN81L3RY6CnLwPC/L1Yu/xPs/MYbm5FwcbwUiNo5XoDu9VNeBVaOaDvqpYtHweM5OvJuJsTir89080fPdoEMaIkIsMoGQHQfA8xxyhS2DPhlf0PBx/vjIJMzRM8F1kZ2dmHgcKZb42Hnr+dbGgS/zpoN+lKoeOg+zhlhWgta6kzkrdA6TkmFsgVcK1dS8aMgXtx7xu3z1pBLe/PlIbw+mvsFPlh0d9H3hIb6z+a4jD1OpKiOEMLsHQ9VeC4wmzKoiTGpcyGnW6aTCNgaDAKt7/blkak9fWpLiVwCZDAJIXx9r/v5vnP/UNjxPlz5TymcTDbdQHz+KOns8LiVcU6Iju2xILlxHE02YVSJkN3Jm6mpOrG8gYkHeNezIevwq/yfaep7RvqP9+H3f/7Hi4h4cz2JTOskXVu3k+d5bNVkqBYAQCbdQH5tMU2gaYaJEjN8N4lIiG+2suYSpfZhVoLnuZC6Ov4HxcZv6CORdWNfn8kDubrrTLwcdXk3QPkxVbZpSJzAuPAcAC5uwiWATxsOjW7azofuRql31SPswq9S4hjO4ZsyF5SXIwDOwOeNyf/a39GSWBR2eUmoUEokwLjyHsIniioNDCQRyZOhyN9DRt6Rqk+XBaMIc5SbJcbTGDGlHECDjwEuFzZoslcKmLjEDgEx+G56XDjie0cOYEptyz9AQOwrXK+F6BdKF7RSd3pr+HjVhjnLLcg9Q9N5HfdiQd4WMY+iR9qDDqmBCIjoF245QcjI11wdT/YTmupOYYB/HNJnIlGQEgPXpAg9lflYh69gK8egkUtEJuKZEb24jjrMz6KD2Ysjk11XwYvnB0IQ5ypVcf4BKS8Sls2jjGtiRfSngqCpTc93JfHLSG7l63nqazw1RWpfl8p9O5d6urwQdmhoSwomN13Je/WTSJQ9LhL6SwRKYlopyLJfwYvfgFrYYasnYdI6KL2CamUrCClEyHplkkc3WJjakF1VIQlcHoglzlHOcnXx7x2N8aeo5TIw7bMqGEeygw6o4lpXg6zPewDvOWkn88rm4Z59JZOlSvrfmBV54/AI2dz8cdIjqCAk2r2ucTEsMMo6F44FjBFsgbkNvJuiWF+HCxBVELQvPQCwkgEXSC9HKbGYlZ/BI7pfkCpsDjlMdiN6tpAps7X6cf9v4HCVPaIqAbUeCDqkCWcyqyxBusWFrB/aDD+Pc/iTxZIkbJ42WO2iogzG4PNa9jaRtmJZwmVvvcFKjw+SE4d62Haztui/wCLe4XUxOhhgbs7FFiFhC3BaSIaEuHKYuOingGNXB6LSSKhINj8eyQuQK26jFVTgO5YyGD3P3Rb00HOPiZjx6N0fo6Y3z6/Xj+OzKgS+Dtz86raRS2IxvOIMF1llELIuV7mZWZB6kWGoLOrAyYVrTGzhZ5lMyHq4xuMZjg7WRbm8rO3qfrpo1n0czvYG0Ugizmt7KB8bN4/QxabKuzYPb4/xgx8+PeHCDJkw1OHt3m+gFbiXRhKnUMNKEqVT1OFB51j5MpZRSagA0YSqlhlUiOhWR2IBf35A8lnENZ1CfmM2+TZdKBUcTplJqWFw/6XO4i79B39MfY8lr38eMpjcdcp8LGj7Ozhc+yrY7LuD5c8/jypYbEdFR36oyaB+mUkNA+zD3ZFkpCsW79thmvvgT6m969ICrK01qPJ9Nf7oE96STALAffJgV3+hi4dOL2dHzxHCHrNRu2oeplBoxITuxzzb5f9fynTnv23c7IS5u+ASb7jwbd/58cP1b0bkXX8AxX5vD2aGFwx2uUgOiCVMpNeRcb/93snjb/LX7bHtu4Qe5r/P1uOefB5YF9qsLkHnHzWN8XBckU5VBE6ZSash53r6T763Vq/jnP83YY9ukxvM5/qHLDvpeD2R0bWRVGfTSTdWEixs+wTunxih4gmvgL9td7uz8CjphfHgYk+cjU//MN9+3Bitu8+s7j+K7a9Ms6vnWHq+rk5aDvo/1kztZE/iSdkr5dNCPqgE23lNfhlwe88pGZEIDhb9sofE7jw3Z3SF00M8Bj4rfkLX/C5Om1Am0df/3AfeOhC/RpeLUiDuslX6UUkop5dM+TKWUUmoANGEqpZRSA6AJUymllBoATZhKKaXUAGjCVEoppQZAE6ZSSik1AP8fRuzoGzLHi98AAAAASUVORK5CYII=
-"
->
-</div>
-
-</div>
-
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
     
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_dict_of_ratio_images" class="doc_header"><code>create_dict_of_ratio_images</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_dict_of_ratio_images</code>(<strong><code>num_imgs</code></strong>:<code>dict</code>, <strong><code>denom_imgs</code></strong>:<code>dict</code>, <strong><code>lab_imgs</code></strong>:<code>dict</code>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ratio_imgs</span> <span class="o">=</span> <span class="n">create_dict_of_ratio_images</span><span class="p">(</span><span class="n">C1_imgs</span><span class="p">,</span> <span class="n">C0_imgs</span><span class="p">,</span> <span class="n">lab_imgs</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ratio_imgs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>dict_keys([&#39;a1g1&#39;, &#39;a1g2&#39;, &#39;a1g3&#39;, &#39;a1g4&#39;, &#39;a1g5&#39;, &#39;a1g6&#39;, &#39;a1g7&#39;, &#39;a1g8&#39;, &#39;a1g9&#39;, &#39;a1g10&#39;, &#39;a2g1&#39;, &#39;a2g2&#39;, &#39;a2g3&#39;, &#39;a2g6&#39;, &#39;a2g9&#39;])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="measure_region_props_to_tidy_df" class="doc_header"><code>measure_region_props_to_tidy_df</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L54" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>measure_region_props_to_tidy_df</code>(<strong><code>int_imgs</code></strong>:<code>dict</code>, <strong><code>lab_imgs</code></strong>:<code>dict</code>, <strong>**<code>reg_prop_kwargs</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -419,9 +515,9 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -462,38 +558,38 @@ nb_path: "00_ratio_images.ipynb"
       <th></th>
       <th>label</th>
       <th>mean_intensity</th>
-      <th>img_key</th>
+      <th>image_key</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>0.030962</td>
+      <td>2029.110000</td>
       <td>a1g1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>0.019942</td>
+      <td>1306.918367</td>
       <td>a1g1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>0.020551</td>
+      <td>1346.777778</td>
       <td>a1g1</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>0.025653</td>
+      <td>1681.184211</td>
       <td>a1g1</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
-      <td>0.023319</td>
+      <td>1528.179104</td>
       <td>a1g1</td>
     </tr>
   </tbody>
@@ -507,40 +603,27 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-<div class="output_wrapper">
-<div class="output">
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">only_intensity_region_properties</span><span class="p">(</span><span class="n">properties</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">prop</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;label|intensity&quot;</span><span class="p">,</span> <span class="n">prop</span><span class="p">)]</span>
+</pre></div>
 
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="only_intensity_region_properties" class="doc_header"><code>only_intensity_region_properties</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L69" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>only_intensity_region_properties</code>(<strong><code>properties</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
+    </div>
 </div>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
     
-<div class="cell border-box-sizing code_cell rendered">
 
-</div>
-    {% endraw %}
-
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -571,9 +654,9 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -584,7 +667,7 @@ nb_path: "00_ratio_images.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="ratiometric_measure_region_props_to_tidy_df" class="doc_header"><code>ratiometric_measure_region_props_to_tidy_df</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L73" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>ratiometric_measure_region_props_to_tidy_df</code>(<strong><code>num_imgs</code></strong>:<code>dict</code>, <strong><code>denom_imgs</code></strong>:<code>dict</code>, <strong><code>lab_imgs</code></strong>:<code>dict</code>, <strong><code>region_properties</code></strong>:<code>list</code>=<em><code>None</code></em>, <strong>**<code>reg_prop_kwargs</code></strong>)</p>
+<h4 id="ratiometric_measure_region_props_to_tidy_df" class="doc_header"><code>ratiometric_measure_region_props_to_tidy_df</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratioimage.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>ratiometric_measure_region_props_to_tidy_df</code>(<strong><code>num_imgs</code></strong>:<code>dict</code>, <strong><code>denom_imgs</code></strong>:<code>dict</code>, <strong><code>lab_imgs</code></strong>:<code>dict</code>, <strong><code>region_properties</code></strong>:<code>list</code>=<em><code>None</code></em>, <strong>**<code>reg_prop_kwargs</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -595,23 +678,23 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ratiometric_measure_region_props_to_tidy_df</span><span class="p">(</span><span class="n">C1_imgs</span><span class="p">,</span> <span class="n">C0_imgs</span><span class="p">,</span> <span class="n">lab_imgs</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ratiometric_measure_region_props_to_tidy_df</span><span class="p">(</span><span class="n">C0_imgs</span><span class="p">,</span> <span class="n">C1_imgs</span><span class="p">,</span> <span class="n">lab_imgs</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -649,7 +732,7 @@ nb_path: "00_ratio_images.ipynb"
       <th>mean_intensity_num</th>
       <th>centroid-0</th>
       <th>centroid-1</th>
-      <th>img_key</th>
+      <th>image_key</th>
       <th>mean_intensity_denom</th>
       <th>ratio_mean_int</th>
     </tr>
@@ -659,56 +742,56 @@ nb_path: "00_ratio_images.ipynb"
       <th>0</th>
       <td>1</td>
       <td>100</td>
-      <td>0.030962</td>
+      <td>879.840000</td>
       <td>4.000000</td>
       <td>301.900000</td>
       <td>a1g1</td>
-      <td>0.013425</td>
-      <td>2.306226</td>
+      <td>2029.110000</td>
+      <td>0.433609</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
       <td>49</td>
-      <td>0.019942</td>
+      <td>751.204082</td>
       <td>9.183673</td>
       <td>287.693878</td>
       <td>a1g1</td>
-      <td>0.011463</td>
-      <td>1.739765</td>
+      <td>1306.918367</td>
+      <td>0.574790</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
       <td>54</td>
-      <td>0.020551</td>
+      <td>605.629630</td>
       <td>35.555556</td>
       <td>79.296296</td>
       <td>a1g1</td>
-      <td>0.009241</td>
-      <td>2.223765</td>
+      <td>1346.777778</td>
+      <td>0.449688</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
       <td>76</td>
-      <td>0.025653</td>
+      <td>3112.315789</td>
       <td>75.763158</td>
       <td>178.513158</td>
       <td>a1g1</td>
-      <td>0.047491</td>
-      <td>0.540171</td>
+      <td>1681.184211</td>
+      <td>1.851264</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
       <td>67</td>
-      <td>0.023319</td>
+      <td>1785.567164</td>
       <td>77.447761</td>
       <td>282.626866</td>
       <td>a1g1</td>
-      <td>0.027246</td>
-      <td>0.855851</td>
+      <td>1528.179104</td>
+      <td>1.168428</td>
     </tr>
   </tbody>
 </table>
@@ -721,47 +804,43 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
     
-<div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="split_img_key_col_to_sample_id_and_replicates" class="doc_header"><code>split_img_key_col_to_sample_id_and_replicates</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L94" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>split_img_key_col_to_sample_id_and_replicates</code>(<strong><code>df</code></strong>, <strong><code>split_regex</code></strong>:<code>str</code>, <strong><code>img_key_colname</code></strong>:<code>str</code>=<em><code>'img_key'</code></em>, <strong><code>sample_id_colname</code></strong>:<code>str</code>=<em><code>'sample_id'</code></em>, <strong><code>replicate_id_colname</code></strong>:<code>str</code>=<em><code>'rep_id'</code></em>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
     
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">split_img_key_col_to_sample_id_and_replicates</span><span class="p">(</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">split_image_key_col_to_sample_id_and_replicates</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">split_regex</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">image_key_colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;image_key&quot;</span><span class="p">,</span>
+    <span class="n">sample_id_colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sample_id&quot;</span><span class="p">,</span>
+    <span class="n">replicate_id_colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rep_id&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">temp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">image_key_colname</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">split_regex</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">temp_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample_id_colname</span><span class="p">,</span> <span class="n">replicate_id_colname</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">temp_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">split_image_key_col_to_sample_id_and_replicates</span><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span> <span class="n">sample_id_colname</span><span class="o">=</span><span class="s2">&quot;genotype&quot;</span><span class="p">,</span> <span class="n">split_regex</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;g&quot;</span>
 <span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -801,7 +880,7 @@ nb_path: "00_ratio_images.ipynb"
       <th>mean_intensity_num</th>
       <th>centroid-0</th>
       <th>centroid-1</th>
-      <th>img_key</th>
+      <th>image_key</th>
       <th>mean_intensity_denom</th>
       <th>ratio_mean_int</th>
       <th>genotype</th>
@@ -813,12 +892,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>0</th>
       <td>1</td>
       <td>100</td>
-      <td>0.030962</td>
+      <td>879.840000</td>
       <td>4.000000</td>
       <td>301.900000</td>
       <td>a1g1</td>
-      <td>0.013425</td>
-      <td>2.306226</td>
+      <td>2029.110000</td>
+      <td>0.433609</td>
       <td>a1</td>
       <td>1</td>
     </tr>
@@ -826,12 +905,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>1</th>
       <td>2</td>
       <td>49</td>
-      <td>0.019942</td>
+      <td>751.204082</td>
       <td>9.183673</td>
       <td>287.693878</td>
       <td>a1g1</td>
-      <td>0.011463</td>
-      <td>1.739765</td>
+      <td>1306.918367</td>
+      <td>0.574790</td>
       <td>a1</td>
       <td>1</td>
     </tr>
@@ -839,12 +918,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>2</th>
       <td>3</td>
       <td>54</td>
-      <td>0.020551</td>
+      <td>605.629630</td>
       <td>35.555556</td>
       <td>79.296296</td>
       <td>a1g1</td>
-      <td>0.009241</td>
-      <td>2.223765</td>
+      <td>1346.777778</td>
+      <td>0.449688</td>
       <td>a1</td>
       <td>1</td>
     </tr>
@@ -852,12 +931,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>3</th>
       <td>4</td>
       <td>76</td>
-      <td>0.025653</td>
+      <td>3112.315789</td>
       <td>75.763158</td>
       <td>178.513158</td>
       <td>a1g1</td>
-      <td>0.047491</td>
-      <td>0.540171</td>
+      <td>1681.184211</td>
+      <td>1.851264</td>
       <td>a1</td>
       <td>1</td>
     </tr>
@@ -865,12 +944,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>4</th>
       <td>5</td>
       <td>67</td>
-      <td>0.023319</td>
+      <td>1785.567164</td>
       <td>77.447761</td>
       <td>282.626866</td>
       <td>a1g1</td>
-      <td>0.027246</td>
-      <td>0.855851</td>
+      <td>1528.179104</td>
+      <td>1.168428</td>
       <td>a1</td>
       <td>1</td>
     </tr>
@@ -885,40 +964,37 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="sample_id_to_categories" class="doc_header"><code>sample_id_to_categories</code><a href="https://github.com/morriso1/ratioimage/tree/master/ratioimage/ratio_images.py#L107" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sample_id_to_categories</code>(<strong><code>df</code></strong>, <strong><code>sample_id_colname</code></strong>:<code>str</code>=<em><code>'sample_id'</code></em>, <strong><code>old_to_new_sample_ids</code></strong>:<code>dict</code>=<em><code>None</code></em>, <strong><code>categories</code></strong>:<code>list</code>=<em><code>None</code></em>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sample_id_to_categories</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">sample_id_colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sample_id&quot;</span><span class="p">,</span>
+    <span class="n">old_to_new_sample_ids</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">categories</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">old_to_new_sample_ids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">sample_id_colname</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">old_to_new_sample_ids</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
-<div class="cell border-box-sizing code_cell rendered">
+    <span class="n">df</span><span class="p">[</span><span class="n">sample_id_colname</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">sample_id_colname</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -965,7 +1041,7 @@ nb_path: "00_ratio_images.ipynb"
       <th>mean_intensity_num</th>
       <th>centroid-0</th>
       <th>centroid-1</th>
-      <th>img_key</th>
+      <th>image_key</th>
       <th>mean_intensity_denom</th>
       <th>ratio_mean_int</th>
       <th>genotype</th>
@@ -977,12 +1053,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>0</th>
       <td>1</td>
       <td>100</td>
-      <td>0.030962</td>
+      <td>879.840000</td>
       <td>4.000000</td>
       <td>301.900000</td>
       <td>a1g1</td>
-      <td>0.013425</td>
-      <td>2.306226</td>
+      <td>2029.110000</td>
+      <td>0.433609</td>
       <td>ctrl</td>
       <td>1</td>
     </tr>
@@ -990,12 +1066,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>1</th>
       <td>2</td>
       <td>49</td>
-      <td>0.019942</td>
+      <td>751.204082</td>
       <td>9.183673</td>
       <td>287.693878</td>
       <td>a1g1</td>
-      <td>0.011463</td>
-      <td>1.739765</td>
+      <td>1306.918367</td>
+      <td>0.574790</td>
       <td>ctrl</td>
       <td>1</td>
     </tr>
@@ -1003,12 +1079,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>2</th>
       <td>3</td>
       <td>54</td>
-      <td>0.020551</td>
+      <td>605.629630</td>
       <td>35.555556</td>
       <td>79.296296</td>
       <td>a1g1</td>
-      <td>0.009241</td>
-      <td>2.223765</td>
+      <td>1346.777778</td>
+      <td>0.449688</td>
       <td>ctrl</td>
       <td>1</td>
     </tr>
@@ -1016,12 +1092,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>3</th>
       <td>4</td>
       <td>76</td>
-      <td>0.025653</td>
+      <td>3112.315789</td>
       <td>75.763158</td>
       <td>178.513158</td>
       <td>a1g1</td>
-      <td>0.047491</td>
-      <td>0.540171</td>
+      <td>1681.184211</td>
+      <td>1.851264</td>
       <td>ctrl</td>
       <td>1</td>
     </tr>
@@ -1029,12 +1105,12 @@ nb_path: "00_ratio_images.ipynb"
       <th>4</th>
       <td>5</td>
       <td>67</td>
-      <td>0.023319</td>
+      <td>1785.567164</td>
       <td>77.447761</td>
       <td>282.626866</td>
       <td>a1g1</td>
-      <td>0.027246</td>
-      <td>0.855851</td>
+      <td>1528.179104</td>
+      <td>1.168428</td>
       <td>ctrl</td>
       <td>1</td>
     </tr>
@@ -1049,9 +1125,9 @@ nb_path: "00_ratio_images.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+    
 
-    {% raw %}
+    
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1088,8 +1164,63 @@ Categories (2, object): [&#39;ctrl&#39;, &#39;mut&#39;]</pre>
 </div>
 
 </div>
-    {% endraw %}
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="testing-workflow">testing workflow<a class="anchor-link" href="#testing-workflow"> </a></h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">foo</span><span class="o">.</span><span class="n">replace</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
 
 </div>
  
 
+
+
+    <div class="tags">
+        
+    </div>
+
+</div>
+
+
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+                  <p><img src="/ratioimage/assets/images/company_logo.png" alt="Company logo"/></p>
+               &copy;2021 Otto Morris. All rights reserved. <br />
+ Site last generated: Aug 26, 2021 <br />
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>

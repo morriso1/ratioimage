@@ -1,6 +1,7 @@
 {
   "ratioimage": {
     "Overview": "/",
-    "module name here": "core.html"
+    "ratio_images": "ratio_images.html",
+    "plot_results": "plot_results.html"
   }
 }
