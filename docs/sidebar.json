@@ -1,6 +1,7 @@
 {
   "ratioimage": {
     "Overview": "/",
-    "ratio_images": "ratio_images.html"
+    "ratio_images": "ratio_images.html",
+    "plot_results": "plot_results.html"
   }
 }
