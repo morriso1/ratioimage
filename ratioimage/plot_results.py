@@ -12,20 +12,13 @@ import seaborn as sns
 
 # Cell
 def tidy_create_strip_box_plot(
-    x_figSize: int = 2.5,
-    y_figSize: int = 2.5,
-    scale_size: int = 1,
     y_axis_start: int = 0,
     y_axis_limit: int = None,
     y_label: str = "set y label",
-    save_path: str = None,
     notch: bool = True,
     **kwargs,
 ):
     """Creates sns plots. Pass **kwargs to sns.stripplot and sns.boxplot."""
-
-    fig, ax = plt.subplots()
-    fig.set_size_inches(x_figSize * scale_size, y_figSize * scale_size)
 
     ax = sns.stripplot(
         alpha=0.2, zorder=0, jitter=0.3, edgecolor="gray", linewidth=0.5, **kwargs
@@ -48,26 +41,14 @@ def tidy_create_strip_box_plot(
     plt.setp(ax.spines.values(), linewidth=1)
     sns.despine()
 
-    if save_path is not None:
-        plt.savefig(save_path, transparent=True, bbox_inches="tight")
-
-    return fig
-
 # Cell
 def tidy_create_swarm_box_plot(
-    x_figSize: int = 2.5,
-    y_figSize: int = 2.5,
-    scale_size: int = 1,
     y_axis_start: int = 0,
     y_axis_limit: int = None,
     y_label: str = "set y label",
-    save_path: str = None,
     **kwargs,
 ):
     """Creates sns plots. Pass **kwargs to sns.swarmplot and sns.boxplot."""
-
-    fig, ax = plt.subplots()
-    fig.set_size_inches(x_figSize * scale_size, y_figSize * scale_size)
 
     ax = sns.swarmplot(
         alpha=0.8, zorder=1, edgecolor="gray", linewidth=0.5, size=5, **kwargs
@@ -94,8 +75,3 @@ def tidy_create_swarm_box_plot(
     plt.yticks(fontsize=12)
     plt.setp(ax.spines.values(), linewidth=1)
     sns.despine()
-
-    return fig
-
-    if save_path is not None:
-        plt.savefig(save_path, transparent=True, bbox_inches="tight")
