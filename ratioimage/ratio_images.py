@@ -29,13 +29,13 @@ def create_img_dict_from_folder(
 # Cell
 def measure_region_props_to_tidy_df(int_imgs: dict, lab_imgs: dict, **reg_prop_kwargs):
     l = list()
-    for image_key, img in int_imgs.items():
+    for img_key, img in int_imgs.items():
         df = pd.DataFrame(
             measure.regionprops_table(
-                lab_imgs[image_key], intensity_image=img, **reg_prop_kwargs
+                lab_imgs[img_key], intensity_image=img, **reg_prop_kwargs
             )
         )
-        df["image_key"] = image_key
+        df["img_key"] = img_key
 
         l.append(df)
 
@@ -56,7 +56,7 @@ def ratiometric_measure_region_props_to_tidy_df(
         measure_region_props_to_tidy_df(num_imgs, lab_imgs, properties=num_rprops),
         measure_region_props_to_tidy_df(denom_imgs, lab_imgs, properties=denom_rprops),
         how="left",
-        on=("image_key", "label"),
+        on=("img_key", "label"),
         suffixes=("_num", "_denom"),
     )
 
