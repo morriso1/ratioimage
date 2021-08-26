@@ -36,7 +36,8 @@ def create_img_dict_from_folder(
 def create_ratio_image(num_img, denom_img, mask_img):
     # convert label image to mask if passed
     mask_img = mask_img > 0
-    ratio = num_img[mask_img] / denom_img[mask_img]
+    # add tiny number to prevent possibility of division by zero
+    ratio = num_img[mask_img] / (denom_img[mask_img] + 1e-100)
     ratio_image = np.zeros_like(num_img)
     ratio_image[mask_img] = ratio
     return ratio_image
