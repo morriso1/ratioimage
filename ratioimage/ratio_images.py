@@ -38,6 +38,7 @@ def create_ratio_image(num_img, denom_img, mask_img):
     mask_img = mask_img > 0
     # add tiny number to prevent possibility of division by zero
     ratio = num_img[mask_img] / (denom_img[mask_img] + 1e-100)
+    ratio[ratio >  np.percentile(ratio, 99.9)] = 0
     ratio_image = np.zeros_like(num_img)
     ratio_image[mask_img] = ratio
     return ratio_image
