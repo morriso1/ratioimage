@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: module name here
-      url: core.html
+      title: ratioimage
+      url: ratioimage.html
     output: web
     title: ratioimage
   output: web
