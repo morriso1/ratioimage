@@ -13,13 +13,13 @@ import seaborn as sns
 # Cell
 def tidy_create_strip_box_plot(
     x_figSize: int = 2.5,
-    y_figSize: int=2.5,
-    scale_size:int=1,
-    y_axis_start:int=0,
-    y_axis_limit:int=None,
-    y_label:str="set y label",
-    save_path:str=None,
-    notch:bool=True,
+    y_figSize: int = 2.5,
+    scale_size: int = 1,
+    y_axis_start: int = 0,
+    y_axis_limit: int = None,
+    y_label: str = "set y label",
+    save_path: str = None,
+    notch: bool = True,
     **kwargs,
 ):
     """Creates sns plots. Pass **kwargs to sns.stripplot and sns.boxplot."""
@@ -50,3 +50,5 @@ def tidy_create_strip_box_plot(
 
     if save_path is not None:
         plt.savefig(save_path, transparent=True, bbox_inches="tight")
+
+    return fig
