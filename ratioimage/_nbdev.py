@@ -10,7 +10,8 @@ index = {"create_img_dict_from_folder": "00_ratio_images.ipynb",
          "ratiometric_measure_region_props_to_tidy_df": "00_ratio_images.ipynb",
          "split_img_key_col_to_sample_id_and_replicates": "00_ratio_images.ipynb",
          "sample_id_to_categories": "00_ratio_images.ipynb",
-         "tidy_create_strip_box_plot": "01_plot_results.ipynb"}
+         "tidy_create_strip_box_plot": "01_plot_results.ipynb",
+         "tidy_create_swarm_box_plot": "01_plot_results.ipynb"}
 
 modules = ["ratio_images.py",
            "plot_results.py"]
