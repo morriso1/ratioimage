@@ -10,7 +10,7 @@ import re
 
 import numpy as np
 import pandas as pd
-from py_clone_detective.utils import extend_region_properties_list, generate_random_cmap
+from clonedetective.utils import extend_region_properties_list, generate_random_cmap
 from skimage import img_as_float, io, measure
 
 # Cell
