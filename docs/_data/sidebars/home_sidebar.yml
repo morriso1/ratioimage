@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: plot_results
       url: plot_results.html
+    - output: web,pdf
+      title: Tutorial
+      url: Tutorial.html
     output: web
     title: ratioimage
   output: web
